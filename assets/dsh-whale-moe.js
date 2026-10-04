@@ -1871,8 +1871,14 @@
     recallNode = null;
   }
 
+  /* 桌面悬浮桌宠在运行时(dsh-newpet 插件会把这个标志置 true),
+     窗口内这只自动隐藏——同一个看板娘只出现一只,避免"两只宠物"。 */
+  function desktopPetRunning() {
+    try { return root.__dshNewpetDesktopRunning === true; } catch (e) { return false; }
+  }
+
   function render(computed) {
-    var petOff = !readPref("pet");
+    var petOff = !readPref("pet") || desktopPetRunning();
     if (petOff || !computed || computed.state === "hidden") {
       removeRoot();
       if (doc.body) doc.body.removeAttribute(VIEW_ATTR);
