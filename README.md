@@ -54,7 +54,7 @@ dsh plugin --profile desktop add <本插件目录或 tgz>
 或从 GitHub：
 
 ```bash
-dsh plugin --profile desktop add github:Marssol/dsh-newpet
+dsh plugin --profile desktop add github:Mars-bbt/dsh-newpet
 ```
 
 装完**重启 DeepSeek Harness**。插件加载时会自动拉起桌面悬浮桌宠，插件卸载时随之结束。

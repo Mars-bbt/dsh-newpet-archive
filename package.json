@@ -53,10 +53,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Marssol/dsh-newpet.git"
+    "url": "git+https://github.com/Mars-bbt/dsh-newpet.git"
   },
   "bugs": {
-    "url": "https://github.com/Marssol/dsh-newpet/issues"
+    "url": "https://github.com/Mars-bbt/dsh-newpet/issues"
   },
-  "homepage": "https://github.com/Marssol/dsh-newpet#readme"
+  "homepage": "https://github.com/Mars-bbt/dsh-newpet#readme"
 }
