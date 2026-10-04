@@ -2,6 +2,13 @@
 
 给 **DeepSeek Harness** 用的鲸鱼娘桌面宠物插件。
 
+## 版本
+
+- **1.0**：修复前的初版，保留原立绘。
+- **1.1**：保留同一套原立绘，修复后台唤起跳转网页、唤起后无法正常关闭到后台，以及继承 Electron/Node 模式变量导致唤起失效的问题。
+
+这两个版本保存在私有仓库 `Mars-bbt/dsh-newpet-archive` 的 Releases 中，下载对应版本的 `.tgz` 后按下面的本地安装命令安装。
+
 > 桌宠是**桌面上独立的透明置顶窗口**，不依赖 DSH 窗口——DSH 最小化后依然悬浮在所有窗口最前面，可以拖到屏幕任意位置。
 
 ## 功能特性
@@ -45,7 +52,7 @@ dsh plugin --profile desktop add <本插件目录或 tgz>
 或从 GitHub：
 
 ```bash
-dsh plugin --profile desktop add github:Mars-bbt/dsh-newpet
+dsh plugin --profile desktop add github:Mars-bbt/dsh-newpet-archive
 ```
 
 装完**重启 DeepSeek Harness**。插件加载时会自动拉起桌面悬浮桌宠，插件卸载时随之结束。
@@ -68,8 +75,18 @@ dsh-newpet/
 1. **立绘是带 alpha 的 webp（VP8L），但 WPF/WIC 的 webp 解码会丢 alpha** → 桌面桌宠改用 libwebp(sharp) 预先转好的 PNG，避免出现黑底方块。
 2. **WPF 的 `ShaderEffect` / `OpacityMask` 在 `AllowsTransparency=true` 的透明分层窗口里会让整窗渲染成空白** → 一律不用，改为纯图片图层 + 原生动画。
 3. **透明置顶窗口需要"置顶守护"**：定时用 `SetWindowPos(HWND_TOPMOST)` 重新提升，否则会被全屏窗口压到下面。
-4. **呼出桌面端**：自己枚举目标进程的可见窗口取最大者恢复，若窗口被隐藏则退化为打开 GUI 网址；并用 `AttachThreadInput` 绕过前台锁定。
+4. **呼出桌面端**：通过正在运行的桌面端程序的单实例入口通知已有进程唤起窗口，由 DeepSeek Harness 自身管理显示、恢复、聚焦和再次关闭到后台，不再跳转网页。唤起时清除从插件宿主继承的 Electron/Node 模式变量，确保启动桌面端而不是 Node 命令行。
 5. **任务状态**来源是本地会话状态文件（`session_projcache/sessions/*.json` 的 `prompt` / `openStep` / `draft` / `pendingCalls`），只读文件、不调需要鉴权的接口。
+
+## 桌宠源码与编译
+
+`desktop-pet/WhaleOverlay.cs` 是桌宠源码。在 Windows 上用 .NET Framework 自带编译器构建：
+
+```powershell
+./desktop-pet/build.ps1
+```
+
+编译前在「设置 → 看板娘」关闭桌面悬浮桌宠，编译后重新启动桌宠即可加载新程序。
 
 ## 许可
 

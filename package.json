@@ -1,6 +1,6 @@
 {
   "name": "dsh-newpet",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "鲸鱼娘桌面宠物 for DeepSeek Harness：窗口内看板娘 + 桌面上独立的悬浮桌宠（透明可读、跟随任务状态、可折叠工作气泡、可拖动缩放）",
   "publishConfig": {
     "access": "public"
@@ -18,7 +18,10 @@
   "files": [
     "lib",
     "assets",
-    "desktop-pet",
+    "desktop-pet/assets",
+    "desktop-pet/WhaleOverlay.exe",
+    "desktop-pet/WhaleOverlay.cs",
+    "desktop-pet/build.ps1",
     "cordis.patch.yml"
   ],
   "license": "MIT",
@@ -53,10 +56,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mars-bbt/dsh-newpet.git"
+    "url": "git+https://github.com/Mars-bbt/dsh-newpet-archive.git"
   },
   "bugs": {
-    "url": "https://github.com/Mars-bbt/dsh-newpet/issues"
+    "url": "https://github.com/Mars-bbt/dsh-newpet-archive/issues"
   },
-  "homepage": "https://github.com/Mars-bbt/dsh-newpet#readme"
+  "homepage": "https://github.com/Mars-bbt/dsh-newpet-archive#readme"
 }
