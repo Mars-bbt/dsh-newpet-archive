@@ -1,0 +1,6 @@
+node_modules/
+*.log
+cfg.txt
+*.tgz
+pose-candidates/
+whale-overlay.log

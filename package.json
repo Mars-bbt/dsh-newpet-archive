@@ -1,0 +1,62 @@
+{
+  "name": "dsh-newpet",
+  "version": "1.0.0",
+  "description": "鲸鱼娘桌面宠物 for DeepSeek Harness：窗口内看板娘 + 桌面上独立的悬浮桌宠（透明可读、跟随任务状态、可折叠工作气泡、可拖动缩放）",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "assets",
+    "desktop-pet",
+    "cordis.patch.yml"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "slots"
+      ]
+    },
+    "compatibility": {
+      "dshReleases": {
+        "0.1.0-rc.6": "unknown",
+        "0.1.1-rc.2": "compatible",
+        "0.1.2-rc.1": "compatible",
+        "0.2.0-rc.2": "compatible"
+      },
+      "note": "桌面端（Electron 壳）与网页端共用一套立绘；桌面悬浮桌宠由本插件的宿主半边在加载时拉起、卸载时结束。"
+    }
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "mascot",
+    "desktop-pet",
+    "whale-girl",
+    "cute"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marssol/dsh-newpet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Marssol/dsh-newpet/issues"
+  },
+  "homepage": "https://github.com/Marssol/dsh-newpet#readme"
+}
